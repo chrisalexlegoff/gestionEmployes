@@ -12,12 +12,17 @@ $prenom = $_POST['prenom'];
 $emploi = $_POST['emploi'];
 $embauche = $_POST['embauche'];
 $sal = $_POST['sal'];
-$comm = $_POST['comm'];
+if ($_POST['comm'] != '') {
+    $comm = $_POST['comm'];
+} else {
+    $comm = null;
+}
+
 $noserv = $_POST['noserv'];
 
 $newEmploye = new Employe($numeroEmploye, $nom, $prenom, $emploi, null, $embauche, $sal, $comm, $noserv);
 $newEmploye = $employeDao->update($newEmploye);
-var_dump($newEmploye);
+
 
 header('Location: ./DetailEmploye.php?numeroEmploye='.$newEmploye->getNumeroEmploye());
 exit();

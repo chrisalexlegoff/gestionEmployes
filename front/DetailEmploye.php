@@ -5,7 +5,6 @@ require_once '../dao/ServiceDao.php';
 
 $employeDao = new EmployeDao();
 $serviceDao = new serviceDao();
-var_dump($_GET);
 $employe = $employeDao->getById($_GET['numeroEmploye']);
 $service = $serviceDao->getById($employe->getNoserv());
 

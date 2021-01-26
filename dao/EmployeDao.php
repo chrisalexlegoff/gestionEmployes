@@ -35,11 +35,12 @@ class EmployeDao
         $nom = $newEmploye->getNom();
         $prenom = $newEmploye->getPrenom();
         $emploi = $newEmploye->getEmploi();
-        $sup = $newEmploye->getSup($newEmploye->setSup($emploi));
+
+        //$sup = $newEmploye->getSup($newEmploye->setSup($emploi));
         $dateEmbauche = $newEmploye->getDateEmbauche();
         $salaire = $newEmploye->getSalaire();
         $commission = $newEmploye->getCommission();
-        $noserv = $newEmploye->getNoserv();
+        //$noserv = $newEmploye->getNoserv();
         $preparedQuery->bindParam(':numeroEmployeParam', $numeroEmploye);
         $preparedQuery->bindParam(':nomParam', $nom);
         $preparedQuery->bindParam(':prenomParam', $prenom);
@@ -73,11 +74,15 @@ class EmployeDao
             $EmployeEnCours->setNom($row['nom']);
             $EmployeEnCours->setPrenom($row['prenom']);
             $EmployeEnCours->setEmploi($row['emploi']);
-            $EmployeEnCours->getSup($row['sup']);
+            //$EmployeEnCours->getSup($row['sup']);
+            if ($row['sup'] != null)
+                $superieur = new Employe($row['sup']);
+            $EmployeEnCours->setSuperieur($row['emploi'],$superieur);
             $EmployeEnCours->setDateEmbauche($row['embauche']);
             $EmployeEnCours->setSalaire($row['sal']);
             $EmployeEnCours->setCommission($row['comm']);
-            $EmployeEnCours->setNoserv($row['noserv']);
+            //$EmployeEnCours->setNoserv($row['noserv']);
+            $monService = new Service()
             $resultats[] = $EmployeEnCours;
         }
         return $resultats;
@@ -111,11 +116,11 @@ class EmployeDao
         $nom = $newEmploye->getNom();
         $prenom = $newEmploye->getPrenom();
         $emploi = $newEmploye->getEmploi();
-        $sup = $newEmploye->getSup($newEmploye->setSup($emploi));
+        //$sup = $newEmploye->getSup($newEmploye->setSup($emploi));
         $dateEmbauche = $newEmploye->getDateEmbauche();
         $salaire = $newEmploye->getSalaire();
         $commission = $newEmploye->getCommission();
-        $noserv = $newEmploye->getNoserv();
+        //$noserv = $newEmploye->getNoserv();
         $preparedQuery->bindParam(':numeroEmployeParam', $nextId);
         $preparedQuery->bindParam(':nomParam', $nom);
         $preparedQuery->bindParam(':prenomParam', $prenom);

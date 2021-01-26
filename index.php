@@ -15,7 +15,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/grid.css" rel="stylesheet">
-    <link href="../css/navbar-top-fixed.css" rel="stylesheet">
+    <link href="css/navbar-top-fixed.css" rel="stylesheet">
 </head>
 
 <body>

@@ -6,31 +6,31 @@ class Employe {
     private ?string $nom;
     private ?string $prenom;
     private ?string $emploi;
-    private ?int $sup;
+    private ?Employe $superieur;
     private ?string $dateEmbauche;
     private ?float $salaire;
     private ?float $commission;
-    private ?int $noserv;
+    private ?Service $service;
   
     public function __construct(?int $numeroEmploye = null,
     ?string $nom = null,
     ?string $prenom = null,
     ?string $emploi= null, 
-    ?int $sup = null,
+    ?Employe $superieur = null,
     ?string $dateEmbauche = null,
     ?float $salaire = null,
     ?float $commission = null,
-    ?int $noserv = null)
+    ?Service $service = null)
     {
         $this->numeroEmploye = $numeroEmploye;
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->emploi = $emploi;
-        $this->sup = $sup;
+        $this->superieur = $superieur;
         $this->dateEmbauche = $dateEmbauche;
         $this->salaire = $salaire;
         $this->commission = $commission;
-        $this->noserv = $noserv;
+        $this->service = $service;
     }
 
 
@@ -121,9 +121,9 @@ class Employe {
     /**
      * Get the value of sup
      */ 
-    public function getSup(): ?int
+    public function getSuperieur(): ?Employe
     {
-        return $this->sup;
+        return $this->superieur;
     }
 
     /**
@@ -131,22 +131,22 @@ class Employe {
      *
      * @return  self
      */ 
-    public function setSup($emploi)
+    public function setSuperieur(?Employe $emploi, $superieur)
     {
         if(strtoupper($emploi)=='SECRETAIRE' ||  strtoupper($emploi)=='DIRECTEUR' ||  strtoupper($emploi)=='BALAYEUR') {
-            $sup = 1000;
+            $superieur = 1000;
         } elseif (strtoupper($emploi)=='TECHNICIEN') {
-            $sup = 1200;
+            $superieur = 1200;
         } elseif (strtoupper($emploi)=='VENDEUR') {
-            $sup = 1300;
+            $superieur = 1300;
         } elseif (strtoupper($emploi)=='PUPITREUR' ||  strtoupper($emploi)=='PROGRAMMEUR' ||  strtoupper($emploi)=='ANALYSTE') {
-            $sup = 1500;
+            $superieur = 1500;
         } elseif (strtoupper($emploi)=='COMPTABLE') {
-            $sup = 1600;
+            $superieur = 1600;
         } elseif (strtoupper($emploi)=='PRESIDENT') {
-            $sup = null;
+            $superieur = null;
         }
-        $this->sup = $sup;
+        $this->superieur = $superieur;
     }
 
     /**
@@ -204,20 +204,22 @@ class Employe {
     }
 
     /**
-     * Get the value of noserv
+     * Get the value of noservice
      */ 
-    public function getNoserv(): ?int
+    public function getService()
     {
-        return $this->noserv;
+        return $this->service;
     }
 
     /**
-     * Set the value of noserv
+     * Set the value of noservice
      *
      * @return  self
      */ 
-    public function setNoserv(?int $noserv)
+    public function setService(?Service $service)
     {
-        $this->noserv = $noserv;
+        $this->service = $service;
+
+        return $this;
     }
 }
