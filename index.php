@@ -30,7 +30,7 @@
 
         <div class="row">
             <div class="col-md-4">
-                <li><a href="front/ListeEmploye.php">Liste des employés</a></li>
+                <li><a href="controllers/ListeEmployeController.php">Liste des employés</a></li>
             </div>
             <div class="col-md-4">
                 <li><a href="front/afficherCreationEmploye.php">Créer employé</a></li>
@@ -45,7 +45,7 @@
 
         <div class="row">
             <div class="col-md-4">
-                <li><a href="front/ListeService.php">Listes Services</a></li>
+                <li><a href="controllers/ListeServiceController.php">Listes Services</a></li>
             </div>
             <div class="col-md-4">
                 <li><a href="front/afficherCreationService.php">Créer service</a></li>

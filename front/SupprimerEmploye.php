@@ -7,7 +7,7 @@ $employeDao = new EmployeDao();
 $employeDao->deleteById($_GET['numeroEmploye']);
 
 
-header('Location: ./ListeEmploye.php');
+header('Location: ../controllers/ListeEmployeController.php');
 exit();
 
 

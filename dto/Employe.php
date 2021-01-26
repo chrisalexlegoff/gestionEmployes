@@ -131,21 +131,8 @@ class Employe {
      *
      * @return  self
      */ 
-    public function setSuperieur(?Employe $emploi, $superieur)
+    public function setSuperieur(?Employe $superieur)
     {
-        if(strtoupper($emploi)=='SECRETAIRE' ||  strtoupper($emploi)=='DIRECTEUR' ||  strtoupper($emploi)=='BALAYEUR') {
-            $superieur = 1000;
-        } elseif (strtoupper($emploi)=='TECHNICIEN') {
-            $superieur = 1200;
-        } elseif (strtoupper($emploi)=='VENDEUR') {
-            $superieur = 1300;
-        } elseif (strtoupper($emploi)=='PUPITREUR' ||  strtoupper($emploi)=='PROGRAMMEUR' ||  strtoupper($emploi)=='ANALYSTE') {
-            $superieur = 1500;
-        } elseif (strtoupper($emploi)=='COMPTABLE') {
-            $superieur = 1600;
-        } elseif (strtoupper($emploi)=='PRESIDENT') {
-            $superieur = null;
-        }
         $this->superieur = $superieur;
     }
 

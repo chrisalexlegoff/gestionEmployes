@@ -1,5 +1,6 @@
 <?php
 require_once '../dto/Employe.php';
+require_once '../dto/Service.php';
 require_once '../service/ConnexionSingleton.php';
 
 class EmployeDao
@@ -36,11 +37,11 @@ class EmployeDao
         $prenom = $newEmploye->getPrenom();
         $emploi = $newEmploye->getEmploi();
 
-        //$sup = $newEmploye->getSup($newEmploye->setSup($emploi));
+        $sup = $newEmploye->getSuperieur()->getNumeroEmploye();
         $dateEmbauche = $newEmploye->getDateEmbauche();
         $salaire = $newEmploye->getSalaire();
         $commission = $newEmploye->getCommission();
-        //$noserv = $newEmploye->getNoserv();
+        $noserv = $newEmploye->getService()->getNumeroService();
         $preparedQuery->bindParam(':numeroEmployeParam', $numeroEmploye);
         $preparedQuery->bindParam(':nomParam', $nom);
         $preparedQuery->bindParam(':prenomParam', $prenom);
@@ -59,8 +60,18 @@ class EmployeDao
     {
         $sql =  "select * from emp as e where e.noemp=$numeroEmploye";
         $row = $this->connexion->query($sql)->fetch(PDO::FETCH_ASSOC);
-        $employeEnCours = new Employe($row['noemp'], $row['nom'], $row['prenom'], $row['emploi'], $row['sup'], $row['embauche'], $row['sal'], $row['comm'], $row['noserv']);
-        return  $employeEnCours;
+        $EmployeEnCours = new Employe($row['noemp'], $row['nom'], $row['prenom'], $row['emploi'], null, $row['embauche'], $row['sal'], $row['comm'], null);
+        //recuperer le superieur
+        $superieur = null;
+        if ($row['sup'] != null)
+            $superieur = new Employe($row['sup']);
+
+        $EmployeEnCours->setSuperieur($superieur);
+        //recuperer le service
+        $service = new Service($row['noserv']);
+        $EmployeEnCours->setService($service);
+        
+        return  $EmployeEnCours;
     }
 
     public function getAll(): array
@@ -75,14 +86,14 @@ class EmployeDao
             $EmployeEnCours->setPrenom($row['prenom']);
             $EmployeEnCours->setEmploi($row['emploi']);
             //$EmployeEnCours->getSup($row['sup']);
-            if ($row['sup'] != null)
-                $superieur = new Employe($row['sup']);
-            $EmployeEnCours->setSuperieur($row['emploi'],$superieur);
+            $superieur = new Employe($row['sup']);
+            $EmployeEnCours->setSuperieur($superieur);
             $EmployeEnCours->setDateEmbauche($row['embauche']);
             $EmployeEnCours->setSalaire($row['sal']);
             $EmployeEnCours->setCommission($row['comm']);
             //$EmployeEnCours->setNoserv($row['noserv']);
-            $monService = new Service()
+            $monService = new Service($row['noserv']);
+            $EmployeEnCours->setService($monService);
             $resultats[] = $EmployeEnCours;
         }
         return $resultats;
@@ -106,7 +117,7 @@ class EmployeDao
         $row = $preparedQuery->fetch();
         $nextId = $row['next_id'];
 
-        //2éme étape : mettre à jour le numero de l'mploye dans l'objet Employe 
+        //2éme étape : mettre à jour le numero de l'employe dans l'objet Employe 
         $newEmploye->setNumeroEmploye($nextId);
 
         //3eme étape : persister l'objet Employe en BDD
@@ -117,15 +128,17 @@ class EmployeDao
         $prenom = $newEmploye->getPrenom();
         $emploi = $newEmploye->getEmploi();
         //$sup = $newEmploye->getSup($newEmploye->setSup($emploi));
+        $superieur = $newEmploye->getSuperieur()->getNumeroEmploye();
         $dateEmbauche = $newEmploye->getDateEmbauche();
         $salaire = $newEmploye->getSalaire();
         $commission = $newEmploye->getCommission();
         //$noserv = $newEmploye->getNoserv();
+        $noserv = $newEmploye->getService()->getNumeroService();
         $preparedQuery->bindParam(':numeroEmployeParam', $nextId);
         $preparedQuery->bindParam(':nomParam', $nom);
         $preparedQuery->bindParam(':prenomParam', $prenom);
         $preparedQuery->bindParam(':emploiParam', $emploi);
-        $preparedQuery->bindParam(':supParam', $sup);
+        $preparedQuery->bindParam(':supParam', $superieur);
         $preparedQuery->bindParam(':embaucheParam', $dateEmbauche);
         $preparedQuery->bindParam(':salParam', $salaire);
         $preparedQuery->bindParam(':commParam', $commission);

@@ -18,13 +18,21 @@ if ($_POST['comm'] != '') {
     $comm = null;
 }
 
-$noserv = $_POST['noserv'];
+$newEmploye = new Employe($numeroEmploye, $nom, $prenom, $emploi, null, $embauche, $sal, $comm, null);
+if ($_POST['sup'] != '') {
+    $superieur = new Employe ($_POST['sup']);
+    $newEmploye->setSuperieur($superieur);
+    $newEmploye->getSuperieur()->getNumeroEmploye();
+} 
+if ($_POST['noserv'] != '') {
+    $monService = new Service($_POST['noserv']);
+    $newEmploye->setService($monService);
+} 
 
-$newEmploye = new Employe($numeroEmploye, $nom, $prenom, $emploi, null, $embauche, $sal, $comm, $noserv);
 $newEmploye = $employeDao->update($newEmploye);
 
 
-header('Location: ./DetailEmploye.php?numeroEmploye='.$newEmploye->getNumeroEmploye());
+header('Location: ./DetailEmploye.php?numeroEmploye='.$newEmploye->getNumeroEmploye()."&sup=".$newEmploye->getSuperieur()->getNumeroEmploye());
 exit();
 
 

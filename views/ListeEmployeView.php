@@ -32,6 +32,8 @@
                 <th scope="col">Salaire</th>
                 <th scope="col">Commission</th>
                 <th scope="col">Numéro de service</th>
+                <th scope="col">Service</th>
+                <th scope="col">Ville</th>
             </tr>
         <?php
 
@@ -50,7 +52,7 @@
             echo $employe->getEmploi() . "\t";
             echo "</td>";
             echo "<td>";
-            echo $employe->getSup($employe->setSup($employe->getEmploi())) . "\t";
+            echo $employe->getSuperieur()->getNumeroEmploye();
             echo "</td>";
             echo "<td>";
             echo $employe->getDateEmbauche() . "\t";
@@ -62,13 +64,19 @@
             echo $employe->getCommission() . "\t";
             echo "</td>";
             echo "<td>";
+            echo $employe->getService()->getNumeroService() . "\t";
+            echo "</td>";
+            echo "<td>";
             echo $employe->getService()->getNom() . "\t";
             echo "</td>";
             echo "<td>";
-            echo "<a href='./SupprimerEmploye.php?numeroEmploye=" . $employe->getNumeroEmploye() . "'>supprimer</a>";
+            echo $employe->getService()->getVille() . "\t";
             echo "</td>";
             echo "<td>";
-            echo "<a href='./AfficherModificationEmploye.php?numeroEmploye=" . $employe->getNumeroEmploye() . "'>modifier</a>";
+            echo "<a href='../front/SupprimerEmploye.php?numeroEmploye=" . $employe->getNumeroEmploye() . "'>supprimer</a>";
+            echo "</td>";
+            echo "<td>";
+            echo "<a href='../front/AfficherModificationEmploye.php?numeroEmploye=" . $employe->getNumeroEmploye()."&sup=".$employe->getSuperieur()->getNumeroEmploye() . "'>modifier</a>";
             echo "</td>";
             echo "</tr>";
         }

@@ -17,10 +17,18 @@ if ($_POST['nom'] == "" || $_POST['prenom'] == "" || $_POST['emploi'] == "" || $
     } else {
         $comm = null;
     }
-
-    $noserv = $_POST['noserv'];
-
-    $newEmploye = new Employe(null, $nom, $prenom, $emploi, null, $embauche, $sal, $comm, $noserv);
+    
+ 
+    $newEmploye = new Employe(null, $nom, $prenom, $emploi, null, $embauche, $sal, $comm, null);
+    if ($_POST['sup'] != '') {
+        $superieur = new Employe ($_POST['sup']);
+        $newEmploye->setSuperieur($superieur);
+        $newEmploye->getSuperieur()->getNumeroEmploye();
+    } 
+    if ($_POST['noserv'] != '') {
+        $monService = new Service($_POST['noserv']);
+        $newEmploye->setService($monService);
+    } 
     $newEmploye = $employeDao->save($newEmploye);
     var_dump($newEmploye);
 

@@ -28,6 +28,7 @@
                 <option value="secretaire">Secrétaire</option>
                 <option value="balayeur">Balayeur</option>
             </select> <br>
+            <input type="number" class="form-control" placeholder="numéro supérieur" name="sup"> <br>
             <input type="date" class="form-control" placeholder="date d'embauche" name="embauche"> <br>
             <input type="number" step=0.01 class="form-control" placeholder="Salaire" name="sal"> <br>
             <input type="number" step=0.01 class="form-control" placeholder="Commission" name="comm"> <br>
