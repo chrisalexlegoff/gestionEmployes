@@ -13,7 +13,7 @@ $ville = $_POST['ville'];
 $nom = $_POST['nom'];
 $numeroService = $_POST['numeroService'];
 $newService = new Service($numeroService, $nom, $ville);
-$newService = $serviceDao->update($newService,$conn);
+$newService = $serviceDao->update($newService);
 
 
 header('Location: ./DetailService.php?numeroService='.$newService->getNumeroService());

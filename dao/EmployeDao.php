@@ -35,7 +35,7 @@ class EmployeDao
         $nom = $newEmploye->getNom();
         $prenom = $newEmploye->getPrenom();
         $emploi = $newEmploye->getEmploi();
-        $sup = $newEmploye->getSup();
+        $sup = $newEmploye->getSup($newEmploye->setSup($emploi));
         $dateEmbauche = $newEmploye->getDateEmbauche();
         $salaire = $newEmploye->getSalaire();
         $commission = $newEmploye->getCommission();
@@ -46,8 +46,8 @@ class EmployeDao
         $preparedQuery->bindParam(':emploiParam', $emploi);
         $preparedQuery->bindParam(':supParam', $sup);
         $preparedQuery->bindParam(':embaucheParam', $dateEmbauche);
-        $preparedQuery->bindParam(':salaireParam', $salaire);
-        $preparedQuery->bindParam(':commissionParam', $commission);
+        $preparedQuery->bindParam(':salParam', $salaire);
+        $preparedQuery->bindParam(':commParam', $commission);
         $preparedQuery->bindParam(':noservParam', $noserv);
         $preparedQuery->execute();
 

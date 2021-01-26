@@ -1,10 +1,10 @@
 <?php
 
-require_once '../dao/ServiceDao.php';
+require_once '../dao/EmployeDao.php';
 
 $employeDao = new EmployeDao();
 
-$serviceDao->deleteById($_GET['numeroEmploye']);
+$employeDao->deleteById($_GET['numeroEmploye']);
 
 
 header('Location: ./ListeEmploye.php');

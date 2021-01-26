@@ -14,12 +14,11 @@ $service = $serviceDao->getById($_GET['numeroService']);
 <body>
     <?php require '../front/navbar.php' ?>
 
-    <h1>Creation d'un nouveau service</h1>
+    <h1>Modification d'un service</h1>
     <form method="POST" action="./faireModificationService.php">
 
         <?php
-        echo '<p>id : ' . $service->getNumeroService() . '</p>';
-        echo '<input type="hidden" placeholder="Nom du service" name ="numeroService" value="' . $service->getNumeroService() . '">  <br>';
+        echo '<input type="hidden" name ="numeroService" value="' . $service->getNumeroService() . '">  <br>';
         echo '<input type="text" placeholder="Nom du service" name ="nom" value="' . $service->getNom() . '">  <br>';
         echo '<input type="text" placeholder="Ville" name ="ville" value="' . $service->getVille() . '">  <br>';
         ?>
