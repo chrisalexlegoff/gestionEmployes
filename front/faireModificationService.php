@@ -1,5 +1,5 @@
 <?php
-require_once 'ServiceDao.php';
+require_once '../dao/ServiceDao.php';
 
 $serviceDao = new ServiceDao();
 
@@ -13,9 +13,7 @@ $ville = $_POST['ville'];
 $nom = $_POST['nom'];
 $numeroService = $_POST['numeroService'];
 $newService = new Service($numeroService, $nom, $ville);
-var_dump($newService);
 $newService = $serviceDao->update($newService,$conn);
-var_dump($newService);
 
 
 header('Location: ./DetailService.php?numeroService='.$newService->getNumeroService());

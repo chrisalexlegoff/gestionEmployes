@@ -1,6 +1,6 @@
 <?php
 
-require_once 'ServiceDao.php';
+require_once '../dao/ServiceDao.php';
 
 $serviceDao = new ServiceDao();
 
@@ -9,10 +9,13 @@ $service = $serviceDao->getById($_GET['numeroService']);
 <html>
 
 <head>
-    <title>liste service</title>
-</head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
-<body><?php
+<link href="../css/navbar-top-fixed.css" rel="stylesheet">
+</head>
+<body>
+<?php require '../front/navbar.php' ?>
+<?php
         echo "<h1>Detail du service " . $service->getNom() . " : </h1>";
         ?>
     <ul>
