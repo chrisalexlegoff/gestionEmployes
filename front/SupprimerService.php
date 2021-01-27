@@ -1,13 +1,14 @@
 <?php
 
-require_once 'ServiceDao.php';
+require_once '../dao/ServiceDao.php';
 
 $serviceDao = new ServiceDao();
 
 $serviceDao->deleteById($_GET['numeroService']);
 
 
-header('Location: ./ListeService.php');
+header('Location: ../controllers/ListeServiceController.php');
+
 exit();
 
 

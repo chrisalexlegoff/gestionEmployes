@@ -1,27 +1,17 @@
 <?php
 
-require_once 'ServiceDao.php';
+require_once '../dao/ServiceDao.php';
 $serviceDao = new ServiceDao();
 
-if (!isset($_POST['ville']) || !isset($_POST['nom'])) {
-    //une redirect
+if ($_POST['ville'] == "" || $_POST['nom'] == "") {
+    header('Location: ../index.php');
+} else {
+    $ville = $_POST['ville'];
+    $nom = $_POST['nom'];
+
+    $newService = new Service(null, $nom, $ville);
+    $newService = $serviceDao->save($newService);
+
+    header('Location: ./DetailService.php?numeroService=' . $newService->getNumeroService());
+    exit();
 }
-
-
-$ville = $_POST['ville'];
-$nom = $_POST['nom'];
-
-$newService = new Service(null, $nom, $ville);
-var_dump($newService);
-$newService = $serviceDao->save($newService);
-var_dump($newService);
-
-
-header('Location: ./DetailService.php?numeroService='.$newService->getNumeroService());
-exit();
-
-
-
-
-
-

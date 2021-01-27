@@ -1,6 +1,6 @@
 <?php
-require_once 'Service.php';
-require_once 'ConnexionSingleton.php';
+require_once '../dto/Service.php';
+require_once '../service/ConnexionSingleton.php';
 
 class ServiceDao
 {
