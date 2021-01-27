@@ -1,7 +1,7 @@
 <?php
 require_once '../dto/Employe.php';
 require_once '../dto/Service.php';
-require_once '../service/ConnexionSingleton.php';
+require_once '../services/ConnexionSingleton.php';
 
 class EmployeDao
 {
@@ -107,7 +107,14 @@ class EmployeDao
         $preparedQuery->execute();
     }
 
-
+    public function mettreANullEmployesParServcice(?int $numeroService): void
+    {
+        $sql = "update emp e set noserv = null where e.noserv =:numeroServiceParam";
+        $preparedQuery = $this->connexion->prepare($sql);
+        $preparedQuery->bindParam(':numeroServiceParam', $numeroService);
+        $preparedQuery->execute();
+        
+    }
     function save(Employe $newEmploye): Employe
     {
         //1er étape : récuperer un id à partir de la sequence seq_emp
