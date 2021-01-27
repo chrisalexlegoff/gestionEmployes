@@ -39,10 +39,10 @@
             echo $service->getVille() . "\t";
             echo "</td>";
             echo "<td>";
-            echo "<a href='../front/SupprimerService.php?numeroService=" . $service->getNumeroService() . "'>supprimer</a>";
+            echo "<a href='../controllers/SupprimerServiceController.php?numeroService=" . $service->getNumeroService() . "'>supprimer</a>";
             echo "</td>";
             echo "<td>";
-            echo "<a href='../front/AfficherModificationService.php?numeroService=" . $service->getNumeroService() . "'>modifier</a>";
+            echo "<a href='../controllers/ModificationServiceController.php?numeroService=" . $service->getNumeroService() . "'>modifier</a>";
             echo "</td>";
             echo "</tr>";
         }

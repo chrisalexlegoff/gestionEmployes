@@ -76,10 +76,10 @@
                     echo $employe->getService()->getVille();
                 echo "</td>";
                 echo "<td>";
-                echo "<a href='../front/SupprimerEmploye.php?numeroEmploye=" . $employe->getNumeroEmploye() . "'>supprimer</a>";
+                echo "<a href='../controllers/SupprimerEmployeController.php?numeroEmploye=" . $employe->getNumeroEmploye() . "'>supprimer</a>";
                 echo "</td>";
                 echo "<td>";
-                echo "<a href='../front/AfficherModificationEmploye.php?numeroEmploye=" . $employe->getNumeroEmploye() . "&sup=" . $employe->getSuperieur()->getNumeroEmploye() . "'>modifier</a>";
+                echo "<a href='../controllers/ModificationEmployeController.php?numeroEmploye=" . $employe->getNumeroEmploye() . "&sup=" . $employe->getSuperieur()->getNumeroEmploye() . "'>modifier</a>";
                 echo "</td>";
                 echo "</tr>";
             }

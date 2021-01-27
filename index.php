@@ -46,7 +46,7 @@
                     <li><a href="controllers/ListeServiceController.php">Listes Services</a></li>
                 </div>
                 <div class="col-md-4">
-                    <li><a href="front/afficherCreationService.php">Créer service</a></li>
+                    <li><a href="controllers/CreationServiceController.php">Créer service</a></li>
                 </div>
             </div>
         </div>

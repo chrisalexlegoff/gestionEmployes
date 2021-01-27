@@ -9,16 +9,16 @@
           <a class="nav-link" href="../index.php">Accueil <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="controllers/ListeEmployeController.php">Liste employés</a>
+          <a class="nav-link" href="../controllers/ListeEmployeController.php">Liste employés</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../front/afficherCreationEmploye.php">Création employé</a>
+          <a class="nav-link" href="../controllers/CreationEmployeController.php">Création employé</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="controllers/ListeServiceController.php">Liste services</a>
+          <a class="nav-link" href="../controllers/ListeServiceController.php">Liste services</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../front/afficherCreationService.php">Créer service</a>
+          <a class="nav-link" href="../controllers/CreationServiceController.php">Créer service</a>
         </li>
       </ul>
     </div>
