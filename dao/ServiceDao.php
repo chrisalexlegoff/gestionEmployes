@@ -1,6 +1,6 @@
 <?php
 require_once '../dto/Service.php';
-require_once '../service/ConnexionSingleton.php';
+require_once '../services/ConnexionSingleton.php';
 
 class ServiceDao
 {
@@ -15,8 +15,6 @@ class ServiceDao
         }
 
     }
-
-    
 
     public function update(Service $newService) : Service
     {
@@ -37,10 +35,12 @@ class ServiceDao
         return  $newService;
     }
 
-    public function getById(?int $numeroService): Service
+    public function getById(?int $numeroService): ?Service
     {
         $sql =  "select * from serv as e where e.noserv=$numeroService";
         $row = $this->connexion->query($sql)->fetch(PDO::FETCH_ASSOC);
+        if(!$row)
+            return null;
         $serviceEnCours = new Service($row['noserv'], $row['service'], $row['ville']);
         return  $serviceEnCours;
     }

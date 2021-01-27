@@ -24,34 +24,32 @@
 
         <h1>Bienvenue sur l'application de gestion des employés</h1>
         <p class="lead">Système de gestion en deux parties : employés | Services.</p>
+        <div class="grid-block">
+            <h2>Employés</h2>
+            <p>There are five tiers to the Bootstrap grid system, one for each range of devices we support. Each tier starts at a minimum viewport size and automatically applies to the larger devices unless overridden.</p>
 
-        <h2>Employés</h2>
-        <p>There are five tiers to the Bootstrap grid system, one for each range of devices we support. Each tier starts at a minimum viewport size and automatically applies to the larger devices unless overridden.</p>
-
-        <div class="row">
-            <div class="col-md-4">
-                <li><a href="controllers/ListeEmployeController.php">Liste des employés</a></li>
-            </div>
-            <div class="col-md-4">
-                <li><a href="front/afficherCreationEmploye.php">Créer employé</a></li>
-            </div>
-            <div class="col-md-4">
-                <li><a href=""></a></li>
+            <div class="row">
+                <div class="col-md-4">
+                    <li><a href="controllers/ListeEmployeController.php">Liste des employés</a></li>
+                </div>
+                <div class="col-md-4">
+                    <li><a href="controllers/CreationEmployeController.php">Créer employé</a></li>
+                </div>
             </div>
         </div>
+        <div class="grid-block">
+            <h2>Services</h2>
+            <p>There are five tiers to the Bootstrap grid system, one for each range of devices we support. Each tier starts at a minimum viewport size and automatically applies to the larger devices unless overridden.</p>
 
-        <h2>Services</h2>
-        <p>There are five tiers to the Bootstrap grid system, one for each range of devices we support. Each tier starts at a minimum viewport size and automatically applies to the larger devices unless overridden.</p>
-
-        <div class="row">
-            <div class="col-md-4">
-                <li><a href="controllers/ListeServiceController.php">Listes Services</a></li>
-            </div>
-            <div class="col-md-4">
-                <li><a href="front/afficherCreationService.php">Créer service</a></li>
+            <div class="row">
+                <div class="col-md-4">
+                    <li><a href="controllers/ListeServiceController.php">Listes Services</a></li>
+                </div>
+                <div class="col-md-4">
+                    <li><a href="front/afficherCreationService.php">Créer service</a></li>
+                </div>
             </div>
         </div>
-
 
     </div>
     <!-- /container -->

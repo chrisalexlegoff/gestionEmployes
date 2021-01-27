@@ -1,4 +1,3 @@
-
 <html>
 
 <head>
@@ -14,75 +13,79 @@
 
 
     <?php
-    
+
     if (empty($employes)) {
         echo "<h1> Liste vide </h1>";
     } else {
-    
-    ?>
-    <div class="form-group-div">
-        <table class="table">
-            <tr>
-                <th scope="col">Numero employé</th>
-                <th scope="col">Nom</th>
-                <th scope="col">Prénom</th>
-                <th scope="col">emploi</th>
-                <th scope="col">supérieur</th>
-                <th scope="col">Date d'embauche</th>
-                <th scope="col">Salaire</th>
-                <th scope="col">Commission</th>
-                <th scope="col">Numéro de service</th>
-                <th scope="col">Service</th>
-                <th scope="col">Ville</th>
-            </tr>
-        <?php
 
-        foreach ($employes as $employe) {
-            echo "<tr>";
-            echo "<td>";
-            echo $employe->getNumeroEmploye() . "\t";
-            echo "</td>";
-            echo "<td>";
-            echo $employe->getNom() . "\t";
-            echo "</td>";
-            echo "<td>";
-            echo $employe->getPrenom() . "\t";
-            echo "</td>";
-            echo "<td>";
-            echo $employe->getEmploi() . "\t";
-            echo "</td>";
-            echo "<td>";
-            echo $employe->getSuperieur()->getNumeroEmploye();
-            echo "</td>";
-            echo "<td>";
-            echo $employe->getDateEmbauche() . "\t";
-            echo "</td>";
-            echo "<td>";
-            echo $employe->getSalaire() . "\t";
-            echo "</td>";
-            echo "<td>";
-            echo $employe->getCommission() . "\t";
-            echo "</td>";
-            echo "<td>";
-            echo $employe->getService()->getNumeroService() . "\t";
-            echo "</td>";
-            echo "<td>";
-            echo $employe->getService()->getNom() . "\t";
-            echo "</td>";
-            echo "<td>";
-            echo $employe->getService()->getVille() . "\t";
-            echo "</td>";
-            echo "<td>";
-            echo "<a href='../front/SupprimerEmploye.php?numeroEmploye=" . $employe->getNumeroEmploye() . "'>supprimer</a>";
-            echo "</td>";
-            echo "<td>";
-            echo "<a href='../front/AfficherModificationEmploye.php?numeroEmploye=" . $employe->getNumeroEmploye()."&sup=".$employe->getSuperieur()->getNumeroEmploye() . "'>modifier</a>";
-            echo "</td>";
-            echo "</tr>";
+    ?>
+        <div class="form-group-div">
+            <table class="table">
+                <tr>
+                    <th scope="col">Numero employé</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">emploi</th>
+                    <th scope="col">supérieur</th>
+                    <th scope="col">Date d'embauche</th>
+                    <th scope="col">Salaire</th>
+                    <th scope="col">Commission</th>
+                    <th scope="col">Numéro de service</th>
+                    <th scope="col">Service</th>
+                    <th scope="col">Ville</th>
+                </tr>
+            <?php
+
+            foreach ($employes as $employe) {
+                echo "<tr>";
+                echo "<td>";
+                echo $employe->getNumeroEmploye();
+                echo "</td>";
+                echo "<td>";
+                echo $employe->getNom();
+                echo "</td>";
+                echo "<td>";
+                echo $employe->getPrenom();
+                echo "</td>";
+                echo "<td>";
+                echo $employe->getEmploi();
+                echo "</td>";
+                echo "<td>";
+                if ($employe->getSuperieur() != null)
+                    echo $employe->getSuperieur()->getNumeroEmploye();
+                echo "</td>";
+                echo "<td>";
+                echo $employe->getDateEmbauche();
+                echo "</td>";
+                echo "<td>";
+                echo $employe->getSalaire();
+                echo "</td>";
+                echo "<td>";
+                echo $employe->getCommission();
+                echo "</td>";
+                echo "<td>";
+                if ($employe->getService() != null)
+                    echo $employe->getService()->getNumeroService();
+                echo "</td>";
+                echo "<td>";
+                if ($employe->getService() != null)
+                    echo $employe->getService()->getNom();
+                echo "</td>";
+                echo "<td>";
+                if ($employe->getService() != null)
+                    echo $employe->getService()->getVille();
+                echo "</td>";
+                echo "<td>";
+                echo "<a href='../front/SupprimerEmploye.php?numeroEmploye=" . $employe->getNumeroEmploye() . "'>supprimer</a>";
+                echo "</td>";
+                echo "<td>";
+                echo "<a href='../front/AfficherModificationEmploye.php?numeroEmploye=" . $employe->getNumeroEmploye() . "&sup=" . $employe->getSuperieur()->getNumeroEmploye() . "'>modifier</a>";
+                echo "</td>";
+                echo "</tr>";
+            }
         }
-    }
-        ?>
-        </table>
+            ?>
+            </table>
         </div>
 </body>
 
