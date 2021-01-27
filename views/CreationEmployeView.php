@@ -36,8 +36,8 @@
                 <option value="">Aucun</option>
                 <?php
 
-                foreach ($employes as $employe) {
-                    echo '<option value="' . $employe->getService() . '">' . $employe->getNumeroService() . '</option>';
+                foreach ($services as $service) {
+                    echo '<option value="' . $service->getNumeroService() . '">' . $service->getNom() . '</option>';
                 }
                 ?>
             </select> <br>

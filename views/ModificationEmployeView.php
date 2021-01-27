@@ -1,10 +1,4 @@
 <html>
-<?php
-require_once '../dao/EmployeDao.php';
-
-$employeDao = new EmployeDao();
-$employe = $employeDao->getById($_GET['numeroEmploye']);
-?>
 
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
@@ -17,7 +11,7 @@ $employe = $employeDao->getById($_GET['numeroEmploye']);
 
     <h1 class="form-h1">Modification d'un employé</h1>
     <div class="form-group-div">
-    <form method="POST" action="./faireModificationEmploye.php">
+    <form method="POST" action="../controllers/faireModificationEmployeController.php">
 
         <?php
         echo '<input class="form-control" type="hidden" placeholder="Nom du employe" name ="numeroEmploye" value="' . $employe->getNumeroEmploye() . '">  <br>';

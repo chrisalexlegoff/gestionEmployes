@@ -32,7 +32,7 @@ if ($_POST['noserv'] != '') {
 $newEmploye = $employeDao->update($newEmploye);
 
 
-header('Location: ./DetailEmploye.php?numeroEmploye='.$newEmploye->getNumeroEmploye()."&sup=".$newEmploye->getSuperieur()->getNumeroEmploye());
+header('Location: ../controllers/DetailEmployeController.php?numeroEmploye='.$newEmploye->getNumeroEmploye()."&sup=".$newEmploye->getSuperieur()->getNumeroEmploye());
 exit();
 
 

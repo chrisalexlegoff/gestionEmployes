@@ -31,6 +31,6 @@ if ($_POST['nom'] == "" || $_POST['prenom'] == "" || $_POST['emploi'] == "" || $
     $newEmploye = $employeDao->save($newEmploye);
     var_dump($newEmploye);
 
-    header('Location: ../front/DetailEmploye.php?numeroEmploye=' . $newEmploye->getNumeroEmploye());
+    header('Location: ../controllers/DetailEmployeController.php?numeroEmploye=' . $newEmploye->getNumeroEmploye());
     exit();
 }

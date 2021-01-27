@@ -16,7 +16,7 @@ class EmployeDao
         }
     }
 
-    public function update(Employe $newEmploye): Employe
+    public function update(?Employe $newEmploye): ?Employe
     {
         $sql = "UPDATE emp 
                 set noemp=:numeroEmployeParam,
@@ -56,7 +56,7 @@ class EmployeDao
         return  $newEmploye;
     }
 
-    public function getById(?int $numeroEmploye): Employe
+    public function getById(?int $numeroEmploye): ?Employe
     {
         $sql =  "select * from emp as e where e.noemp=$numeroEmploye";
         $row = $this->connexion->query($sql)->fetch(PDO::FETCH_ASSOC);
@@ -115,7 +115,7 @@ class EmployeDao
         $preparedQuery->execute();
         
     }
-    function save(Employe $newEmploye): Employe
+    function save(?Employe $newEmploye): ?Employe
     {
         //1er étape : récuperer un id à partir de la sequence seq_emp
         $sql = "select nextval('seq_emp') as next_id;";
